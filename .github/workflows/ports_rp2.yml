@@ -36,13 +36,13 @@ jobs:
         pip3 install Pillow
         pip3 install numpy
 
-    - name: Install Arm tools
-      uses: ARM-software/cmsis-actions/vcpkg@v1
-      with: 
-        config: "./tflite-micro/tensorflow/lite/micro/tools/github/arm/vcpkg-configuration.json"
+    # - name: Install Arm tools
+    #   uses: ARM-software/cmsis-actions/vcpkg@v1
+    #   with: 
+    #     config: "./tflite-micro/tensorflow/lite/micro/tools/github/arm/vcpkg-configuration.json"
 
-    - name: Activate Arm tool license
-      uses: ARM-software/cmsis-actions/armlm@v1
+    # - name: Activate Arm tool license
+    #   uses: ARM-software/cmsis-actions/armlm@v1
 
     - name: Setup Build for Tensorflow
       run: |
