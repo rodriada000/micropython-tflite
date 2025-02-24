@@ -36,9 +36,4 @@ jobs:
       with:
         name: microlite-rp2-pico-firmware
         path: |
-          micropython-tflite/micropython/build-RPI_PICO_W/firmware.elf
-          micropython-tflite/micropython/build-RPI_PICO_W/firmware.bin
-          micropython-tflite/micropython/build-RPI_PICO_W/firmware.dis
-          micropython-tflite/micropython/build-RPI_PICO_W/firmware.elf.map
-          micropython-tflite/micropython/build-RPI_PICO_W/firmware.hex
-          micropython-tflite/micropython/build-RPI_PICO_W/firmware.uf2
+          micropython/build-RPI_PICO_W/firmware.uf2
