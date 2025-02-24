@@ -33,10 +33,10 @@ jobs:
       run: source tools/ci.sh && ci_rp2_build
     - name: list files
       run: 
-        ls -la ./ports
+        ls -la ./ports/rp2
     - name: Archive PICO firmware
       uses: actions/upload-artifact@v4
       with:
         name: microlite-rp2-pico-firmware
         path: |
-          ./*/firmware.uf2
+          ./ports/rp2/*/firmware.uf2
