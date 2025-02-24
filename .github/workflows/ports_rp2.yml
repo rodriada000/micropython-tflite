@@ -56,8 +56,9 @@ jobs:
         cd ./tflite-micro
         git submodule update --init --recursive
 
+        cd tensorflow
         python3 lite/micro/tools/project_generation/create_tflm_tree.py --makefile_options="TARGET=cortex_m_generic OPTIMIZED_KERNEL_DIR=cmsis_nn TARGET_ARCH=cortex-m0" --rename_cc_to_cpp ./tflm
-
+        cd ./
 
 
     - name: Build
