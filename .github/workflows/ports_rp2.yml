@@ -34,10 +34,10 @@ jobs:
     - name: list files
       run: 
         ls -la ./ &&
-        ls -la ~/ports
+        ls -la ~/
     - name: Archive PICO firmware
       uses: actions/upload-artifact@v4
       with:
         name: microlite-rp2-pico-firmware
         path: |
-          ~/ports/rp2/build-RPI_PICO_W/firmware.uf2
+          ./ports/rp2/build-RPI_PICO_W/firmware.uf2
