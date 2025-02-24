@@ -43,20 +43,22 @@ jobs:
 
     # - name: Activate Arm tool license
     #   uses: ARM-software/cmsis-actions/armlm@v1
-
+    - name: list files
+      run: |
+        ls -la ./
+        
     - name: Setup Build for Tensorflow
       run: |
 
         echo "Regenerating tfm directory"
         rm -rf ./tflm
 
-        cd ./tflite-micro/tensorflow
+        cd ./tflite-micro
+        git submodule update --init --recursive
 
         python3 lite/micro/tools/project_generation/create_tflm_tree.py --makefile_options="TARGET=cortex_m_generic OPTIMIZED_KERNEL_DIR=cmsis_nn TARGET_ARCH=cortex-m0" --rename_cc_to_cpp ./tflm
 
-    - name: list files
-      run: |
-        ls -la ./
+
 
     - name: Build
       run: source tools/ci.sh && ci_rp2_build
