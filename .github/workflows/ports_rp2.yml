@@ -63,7 +63,7 @@ jobs:
     - name: list files
       run: |
         ls -la ./
-        ls -la ./micropython-modules/microlite
+        ls -la ./micropython-modules/microlite/tflm
       continue-on-error: true
     - name: Build
       run: source tools/ci.sh && ci_rp2_build
