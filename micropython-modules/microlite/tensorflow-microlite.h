@@ -39,8 +39,8 @@ extern "C" {
 #include "py/objstr.h"
 #include "py/objarray.h"
 
-#include "tflite-micro/tensorflow/lite/experimental/microfrontend/lib/frontend.h"
-#include "tflite-micro/tensorflow/lite/experimental/microfrontend/lib/frontend_util.h"
+#include "tensorflow/lite/experimental/microfrontend/lib/frontend.h"
+#include "tensorflow/lite/experimental/microfrontend/lib/frontend_util.h"
 
 #define TFLITE_MICRO_VERSION "e87305ee53c124188d0390b1ef8ec0555760d4d6"
 

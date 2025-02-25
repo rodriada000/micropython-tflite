@@ -6,8 +6,8 @@
 // Copied and modified for using with newer tflite-micro sources
 
 #include "python_ops_resolver.h"
-#include "tflite-micro/tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
-#include "tflite-micro/tensorflow/lite/micro/micro_interpreter.h"
+#include "tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
+#include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/schema/schema_generated.h"
 
 #include "tensorflow-microlite.h"

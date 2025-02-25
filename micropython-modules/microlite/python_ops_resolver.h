@@ -15,8 +15,8 @@ limitations under the License.
 #ifndef TENSORFLOW_LITE_MICRO_PYTHON_OPS_RESOLVER_H_
 #define TENSORFLOW_LITE_MICRO_PYTHON_OPS_RESOLVER_H_
 
-#include "tflite-micro/tensorflow/lite/micro/compatibility.h"
-#include "tflite-micro/tensorflow/lite/micro/micro_mutable_op_resolver.h"
+#include "tensorflow/lite/micro/compatibility.h"
+#include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
 
 namespace tflite {
 

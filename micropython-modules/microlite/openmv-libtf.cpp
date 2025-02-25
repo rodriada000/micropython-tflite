@@ -3,10 +3,10 @@
  * This work is licensed under the MIT license, see the file LICENSE for details.
  */
 
-#include "tflite-micro/tensorflow/lite/micro/all_ops_resolver.h"
-#include "tflite-micro/tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
-#include "tflite-micro/tensorflow/lite/micro/micro_interpreter.h"
-#include "tflite-micro/tensorflow/lite/schema/schema_generated.h"
+#include "tensorflow/lite/micro/all_ops_resolver.h"
+#include "tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
+#include "tensorflow/lite/micro/micro_interpreter.h"
+#include "tensorflow/lite/schema/schema_generated.h"
 
 #include "tensorflow-microlite.h"
 #include "openmv-libtf.h"

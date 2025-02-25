@@ -46,25 +46,15 @@ add_library(microlite INTERFACE)
 #     DEPENDS MICROPY_FORCE_BUILD
 # )
 
-if (MICROLITE_PLATFORM STREQUAL "RP2")
-    set (TF_MICROLITE_LOG
-        ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/cortex_m_generic/debug_log.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/cortex_m_generic/micro_time.cpp
-    )
-endif()
 
-if (CONFIG_IDF_TARGET)
-    set(TF_ESP_DIR "${CMAKE_CURRENT_LIST_DIR}/../../tflm_esp_kernels/components/tflite-lib")
-    set(TF_LITE_DIR "${TF_ESP_DIR}/tensorflow/lite")
-    set(TF_MICRO_DIR "${TF_LITE_DIR}/micro")
-    set(TF_MICROLITE_LOG
-            ${TF_MICRO_DIR}/debug_log.cc
-            ${TF_MICRO_DIR}/micro_time.cc
-    )
-else()
-    set(TF_LITE_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite")
-    set(TF_MICRO_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro")
-endif()
+set (TF_MICROLITE_LOG
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/cortex_m_generic/debug_log.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/cortex_m_generic/micro_time.cpp
+)
+
+
+set(TF_LITE_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite")
+set(TF_MICRO_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo TF_LITE_DIR)
 
