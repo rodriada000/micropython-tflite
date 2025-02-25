@@ -24,9 +24,7 @@
 # THE SOFTWARE.
 #/
 
-if (PICO_SDK_PATH)
-  set(MICROLITE_PLATFORM "RP2")
-endif()
+set(MICROLITE_PLATFORM "RP2")
 
 if(NOT MICROPY_DIR)
     get_filename_component(MICROPY_DIR ${PROJECT_DIR}/../.. ABSOLUTE)

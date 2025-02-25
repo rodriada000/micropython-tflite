@@ -44,21 +44,25 @@ jobs:
 
     # - name: Activate Arm tool license
     #   uses: ARM-software/cmsis-actions/armlm@v1
-        
+    - name: list files
+      run: |
+        ls -la ./
+      continue-on-error: true
+              
     - name: Setup Build for Tensorflow
       run: |
         echo "Regenerating tfm directory"
         rm -rf ./micropython-modules/microlite/tflm
 
         cd ./tflite-micro
-        ./micropython-modules/microlite/prepare-tflm-rp2.sh
+        ../micropython-modules/microlite/prepare-tflm-rp2.sh
 
         cd ./
 
     - name: list files
       run: |
         ls -la ./
-        ls -la ./tflm
+        ls -la ./micropython-modules/microlite
       continue-on-error: true
     - name: Build
       run: source tools/ci.sh && ci_rp2_build
