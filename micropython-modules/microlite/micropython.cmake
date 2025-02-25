@@ -66,6 +66,8 @@ else()
     set(TF_MICRO_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro")
 endif()
 
+execute_process(COMMAND ${CMAKE_COMMAND} -E echo TF_LITE_DIR)
+
 # lite c
 
 file(GLOB TF_LITE_C_SRCS
