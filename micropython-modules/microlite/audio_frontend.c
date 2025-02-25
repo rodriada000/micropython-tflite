@@ -40,8 +40,8 @@
 #include "tensorflow-microlite.h"
 
 // tensorflow
-#include "tensorflow/lite/experimental/microfrontend/lib/frontend.h"
-#include "tensorflow/lite/experimental/microfrontend/lib/frontend_util.h"
+#include "tflite-micro/tensorflow/lite/experimental/microfrontend/lib/frontend.h"
+#include "tflite-micro/tensorflow/lite/experimental/microfrontend/lib/frontend_util.h"
 
 // this brings in the constannts used within the config.
 // later we will set these in python and pass in.
