@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 
-#include "tflm/tensorflow/lite/c/common.h"
+#include "tensorflow/lite/c/common.h"
 
 #include "py/runtime.h"
 #include "py/mpprint.h"
