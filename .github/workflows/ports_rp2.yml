@@ -63,7 +63,7 @@ jobs:
     - name: list files
       run: |
         ls -la ./
-        ls -la ./micropython-modules/microlite/tflm
+        ls -la ./micropython-modules/microlite/tflm/third_party/cmsis_nn/Source/*
       continue-on-error: true
     - name: Build
       run: source tools/ci.sh && ci_rp2_build

@@ -192,7 +192,7 @@ if (MICROLITE_PLATFORM STREQUAL "RP2")
 
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_1x1_s8_fast.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_1_x_n_s8.c
-        ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_fast_s16.c
+        # ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_fast_s16.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_s16.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_s8.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/ConvolutionFunctions/arm_convolve_wrapper_s16.c
