@@ -56,7 +56,8 @@ set (TF_MICROLITE_LOG
 set(TF_LITE_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite")
 set(TF_MICRO_DIR "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro")
 
-execute_process(COMMAND ${CMAKE_COMMAND} -E echo TF_LITE_DIR)
+execute_process(COMMAND ${CMAKE_COMMAND} -E echo "TF_LITE_DIR: ${TF_LITE_DIR}")
+execute_process(COMMAND ${CMAKE_COMMAND} -E echo "TF_MICRO_DIR: ${TF_MICRO_DIR}")
 
 # lite c
 
