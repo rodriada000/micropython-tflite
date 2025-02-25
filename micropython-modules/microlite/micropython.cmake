@@ -216,7 +216,7 @@ if (MICROLITE_PLATFORM STREQUAL "RP2")
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_depthwise_conv_nt_t_s8.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_mat_mul_core_1x_s8.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_mat_mul_core_4x_s8.c
-        ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_mat_mul_kernel_s16.c
+        # ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_mat_mul_kernel_s16.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_mat_mult_nt_t_s8.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nntables.c
         ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/cmsis_nn/Source/NNSupportFunctions/arm_nn_vec_mat_mult_t_s16.c
