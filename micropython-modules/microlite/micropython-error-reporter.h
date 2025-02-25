@@ -28,9 +28,9 @@
 
 #include <cstdarg>
 
-#include "tensorflow/lite/core/api/error_reporter.h"
-#include "tensorflow/lite/micro/compatibility.h"
-#include "tensorflow/lite/micro/micro_string.h"
+#include "tflm/tensorflow/lite/core/api/error_reporter.h"
+#include "tflm/tensorflow/lite/micro/compatibility.h"
+#include "tflm/tensorflow/lite/micro/micro_string.h"
 
 namespace microlite {
 
