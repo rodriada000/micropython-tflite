@@ -71,3 +71,6 @@
 [submodule "tflite-micro"]
 	path = tflite-micro
 	url = https://github.com/tensorflow/tflite-micro.git
+[submodule "micropython-ulab"]
+	path = micropython-ulab
+	url = https://github.com/v923z/micropython-ulab.git

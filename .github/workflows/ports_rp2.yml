@@ -48,17 +48,18 @@ jobs:
     - name: Setup Build for Tensorflow
       run: |
         echo "Regenerating tfm directory"
-        rm -rf ./tflm
+        rm -rf ./micropython-modules/microlite/tflm
 
         cd ./tflite-micro
+        ../micropython-modules/microlite/prepare-tflm-rp2.sh
 
-        python tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py --makefile_options="TARGET=cortex_m_generic OPTIMIZED_KERNEL_DIR=cmsis_nn TARGET_ARCH=cortex-m0" --rename_cc_to_cpp ./tflm
         cd ./
 
     - name: list files
       run: |
         ls -la ./
         ls -la ./tflm
+      continue-on-error: true
     - name: Build
       run: source tools/ci.sh && ci_rp2_build
 
