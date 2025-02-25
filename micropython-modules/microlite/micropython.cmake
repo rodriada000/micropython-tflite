@@ -35,7 +35,7 @@ endif()
 # `py.cmake` for `micropy_gather_target_properties` macro usage
 include(${MICROPY_DIR}/py/py.cmake)
 
-include (${CMAKE_CURRENT_LIST_DIR}/micropython_esp.cmake)
+# include (${CMAKE_CURRENT_LIST_DIR}/micropython_esp.cmake)
 
 get_filename_component(TENSORFLOW_DIR ${PROJECT_DIR}/../../../tensorflow ABSOLUTE)
 
