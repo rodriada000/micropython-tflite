@@ -122,7 +122,7 @@ endif
 
 # Add all C files to SRC_USERMOD.
 SRC_USERMOD += $(MICROLITE_MOD_DIR)/tensorflow-microlite.c
-SRC_USERMOD += $(MICROLITE_MOD_DIR)/audio_frontend.c
+# SRC_USERMOD += $(MICROLITE_MOD_DIR)/audio_frontend.c
 
 
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/openmv-libtf.cpp

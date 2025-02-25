@@ -238,7 +238,7 @@ if (MICROLITE_PLATFORM STREQUAL "RP2")
 target_sources(microlite INTERFACE
 #   microlite micropython module sources
     ${CMAKE_CURRENT_LIST_DIR}/tensorflow-microlite.c
-    ${CMAKE_CURRENT_LIST_DIR}/audio_frontend.c
+    # ${CMAKE_CURRENT_LIST_DIR}/audio_frontend.c
     ${CMAKE_CURRENT_LIST_DIR}/openmv-libtf.cpp
     ${CMAKE_CURRENT_LIST_DIR}/micropython-error-reporter.cpp
 
@@ -288,7 +288,7 @@ endif()
 #   microlite micropython module sources
 set (MICROLITE_PYTHON_SRCS
     ${CMAKE_CURRENT_LIST_DIR}/tensorflow-microlite.c
-    ${CMAKE_CURRENT_LIST_DIR}/audio_frontend.c
+    # ${CMAKE_CURRENT_LIST_DIR}/audio_frontend.c
     ${CMAKE_CURRENT_LIST_DIR}/micropython-error-reporter.cpp
 )
 
