@@ -55,6 +55,7 @@ jobs:
         rm -rf ./micropython-modules/microlite/tflm
 
         cd ./tflite-micro
+        chmod +x ../micropython-modules/microlite/prepare-tflm-rp2.sh
         ../micropython-modules/microlite/prepare-tflm-rp2.sh
 
         cd ./
