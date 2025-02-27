@@ -5,7 +5,7 @@
 
 // Copied and modified for using with newer tflite-micro sources
 
-#include "python_ops_resolver.h"
+#include "tflm/tensorflow/lite/micro/micro_mutable_op_resolver.h"
 #include "tflm/tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
 #include "tflm/tensorflow/lite/micro/micro_interpreter.h"
 #include "tflm/tensorflow/lite/schema/schema_generated.h"
@@ -83,7 +83,13 @@ extern "C" {
         //     microlite_interpreter->tensor_area->len, error_reporter);
 
 
-        tflite::PythonOpsResolver op_resolver;
+        tflite::MicroMutableOpResolver<6> op_resolver;
+        // op_resolver->AddFullyConnected(tflite::Register_FULLY_CONNECTED_INT8());
+        // op_resolver->AddConv2D(tflite::Register_CONV_2D_INT8REF());
+        // op_resolver->AddDepthwiseConv2D();
+        // op_resolver->AddSoftmax();
+        // op_resolver->AddAveragePool2D(tflite::Register_AVERAGE_POOL_2D_INT8());
+        // op_resolver->AddReshape();
         tflite::MicroInterpreter *interpreter = new tflite::MicroInterpreter(model,
                                              op_resolver,
                                              (uint8_t*)microlite_interpreter->tensor_area->items,

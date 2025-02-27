@@ -264,7 +264,7 @@ const mp_obj_type_t microlite_tensor_type = {
 // const mp_obj_type_t microlite_audio_frontend_type = {
 //     { &mp_type_type },
 //     .name = MP_QSTR_audio_frontend,
-//     .make_new = af_make_new,
+//     .slot_index_make_new = af_make_new,
 //     .slot_index_print = af_print,
 //     .slot_index_locals_dict = (mp_obj_dict_t*)&audio_frontend_locals_dict,
 // };
@@ -415,7 +415,7 @@ const mp_obj_type_t microlite_interpreter_type = {
     { &mp_type_type },
     .name = MP_QSTR_interpreter,
     .slot_index_print = interpreter_print,
-    .make_new = interpreter_make_new,
+    .slot_index_make_new = interpreter_make_new,
     .slot_index_locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
 };
 
