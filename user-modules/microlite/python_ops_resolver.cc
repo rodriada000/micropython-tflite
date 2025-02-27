@@ -15,7 +15,7 @@ limitations under the License.
 
 #include "python_ops_resolver.h"
 
-#include "tensorflow/lite/micro/kernels/micro_ops.h"
+#include "tflm/tensorflow/lite/micro/kernels/micro_ops.h"
 
 namespace tflite {
 
