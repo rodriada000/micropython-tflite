@@ -24,9 +24,9 @@
 # THE SOFTWARE.
 #
 
-include(${CMAKE_CURRENT_LIST_DIR}/microlite/micropython.cmake)
-
 include(${CMAKE_CURRENT_LIST_DIR}/../micropython-ulab/code/micropython.cmake)
+
+include(${CMAKE_CURRENT_LIST_DIR}/microlite/micropython.cmake)
 
 
 

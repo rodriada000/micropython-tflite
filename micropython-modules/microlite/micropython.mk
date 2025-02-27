@@ -463,6 +463,7 @@ CFLAGS_USERMOD += -Wno-error=unused-const-variable=
 CFLAGS_USERMOD += -fno-builtin
 
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/flatbuffers/include
 
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/gemmlowp
@@ -480,6 +481,7 @@ CFLAGS_USERMOD += -DTF_LITE_MCU_DEBUG_LOG
 
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/kissfft
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/kissfft/tools
 

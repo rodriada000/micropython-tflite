@@ -353,6 +353,7 @@ if (MICROLITE_PLATFORM STREQUAL "RP2")
 target_include_directories(microlite INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/tflm
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow
     ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/kissfft
     ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/kissfft/tools
     ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/flatbuffers/include
