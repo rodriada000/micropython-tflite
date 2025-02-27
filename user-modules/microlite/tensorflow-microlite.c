@@ -215,7 +215,7 @@ static MP_DEFINE_CONST_DICT(tensor_locals_dict, tensor_locals_dict_table);
 const mp_obj_type_t microlite_tensor_type = {
     { &mp_type_type },
     .name = MP_QSTR_tensor,
-    .slot_index_print = tensor_print,
+    .slot_index_print = (mp_print_fun_t)&tensor_print,
     .slot_index_locals_dict = (mp_obj_dict_t*)&tensor_locals_dict,
 };
 
@@ -414,8 +414,8 @@ static MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_tab
 const mp_obj_type_t microlite_interpreter_type = {
     { &mp_type_type },
     .name = MP_QSTR_interpreter,
-    .slot_index_print = interpreter_print,
-    .slot_index_make_new = interpreter_make_new,
+    .slot_index_print = (mp_print_fun_t)&interpreter_print,
+    .slot_index_make_new = (mp_make_new_fun_t)&interpreter_make_new,
     .slot_index_locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
 };
 
