@@ -297,6 +297,25 @@ static mp_obj_t interpreter_make_new(const mp_obj_type_t *type, size_t n_args, s
     return MP_OBJ_FROM_PTR(self);
 }
 
+
+// interpreter class
+static const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
+    { MP_ROM_QSTR(MP_QSTR_invoke), MP_ROM_PTR(&microlite_interpreter_invoke) },
+    { MP_ROM_QSTR(MP_QSTR_getInputTensor), MP_ROM_PTR(&microlite_interpreter_get_input_tensor) },
+    { MP_ROM_QSTR(MP_QSTR_getOutputTensor), MP_ROM_PTR(&microlite_interpreter_get_output_tensor) },
+};
+
+static MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
+
+const mp_obj_type_t microlite_interpreter_type = {
+    { &mp_type_type },
+    .name = MP_QSTR_interpreter,
+    // // .slot_index_print = (mp_print_fun_t*)&interpreter_print,
+    // // .slot_index_make_new = (mp_make_new_fun_t*)&interpreter_make_new,
+    // .slot_index_locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
+};
+
+
 // called before passing the tensor to the callback
 static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj) {
 
@@ -313,16 +332,16 @@ static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_ob
     // .slot_index_print = (mp_print_fun_t*)&interpreter_print,
     // .slot_index_make_new = (mp_make_new_fun_t*)&interpreter_make_new,
     // .slot_index_locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
-    MP_OBJ_TYPE_SET_SLOT(&microlite_interpreter, print, interpreter_print, 0);
-    MP_OBJ_TYPE_SET_SLOT(&microlite_interpreter, make_new, interpreter_make_new, 1);
-    MP_OBJ_TYPE_SET_SLOT(&microlite_interpreter, locals_dict, interpreter_locals_dict, 2);
+    MP_OBJ_TYPE_SET_SLOT(microlite_interpreter, print, interpreter_print, 0);
+    MP_OBJ_TYPE_SET_SLOT(microlite_interpreter, make_new, interpreter_make_new, 1);
+    MP_OBJ_TYPE_SET_SLOT(microlite_interpreter, locals_dict, interpreter_locals_dict, 2);
 
     microlite_tensor->microlite_interpreter = microlite_interpreter;
 
     // .slot_index_print = (mp_print_fun_t*)&tensor_print,
     // .slot_index_locals_dict = (mp_obj_dict_t*)&tensor_locals_dict,
-    MP_OBJ_TYPE_SET_SLOT(&microlite_tensor_type, print, tensor_print, 0);
-    MP_OBJ_TYPE_SET_SLOT(&microlite_tensor_type, locals_dict, tensor_locals_dict, 1);
+    MP_OBJ_TYPE_SET_SLOT(microlite_tensor_type, print, tensor_print, 0);
+    MP_OBJ_TYPE_SET_SLOT(microlite_tensor_type, locals_dict, tensor_locals_dict, 1);
 
     microlite_tensor->base.type = &microlite_tensor_type;
 
@@ -365,23 +384,6 @@ static mp_obj_t interpreter_invoke(mp_obj_t self_in) {
 MP_DEFINE_CONST_FUN_OBJ_1(microlite_interpreter_invoke, interpreter_invoke);
 
 
-
-// interpreter class
-static const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
-    { MP_ROM_QSTR(MP_QSTR_invoke), MP_ROM_PTR(&microlite_interpreter_invoke) },
-    { MP_ROM_QSTR(MP_QSTR_getInputTensor), MP_ROM_PTR(&microlite_interpreter_get_input_tensor) },
-    { MP_ROM_QSTR(MP_QSTR_getOutputTensor), MP_ROM_PTR(&microlite_interpreter_get_output_tensor) },
-};
-
-static MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
-
-const mp_obj_type_t microlite_interpreter_type = {
-    { &mp_type_type },
-    .name = MP_QSTR_interpreter,
-    // // .slot_index_print = (mp_print_fun_t*)&interpreter_print,
-    // // .slot_index_make_new = (mp_make_new_fun_t*)&interpreter_make_new,
-    // .slot_index_locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
-};
 
 
 // main microlite module
