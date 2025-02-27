@@ -3,7 +3,6 @@
  * This work is licensed under the MIT license, see the file LICENSE for details.
  */
 
-#include "tflm/tensorflow/lite/micro/micro_op_resolver.h"
 #include "tflm/tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
 #include "tflm/tensorflow/lite/micro/micro_interpreter.h"
 #include "tflm/tensorflow/lite/schema/schema_generated.h"
@@ -11,6 +10,7 @@
 #include "tensorflow-microlite.h"
 #include "openmv-libtf.h"
 #include "micropython-error-reporter.h"
+#include "python_ops_resolver.h"
 #include <stdio.h>
 
 extern "C" {
@@ -90,12 +90,7 @@ extern "C" {
         // An easier approach is to just use the AllOpsResolver, but this will
         // incur some penalty in code space for op implementations that are not
         // needed by this graph.
-        tflite::MicroMutableOpResolver<5> micro_op_resolver;
-        micro_op_resolver.AddAveragePool2D(tflite::Register_AVERAGE_POOL_2D_INT8());
-        micro_op_resolver.AddConv2D(tflite::Register_CONV_2D_INT8());
-        micro_op_resolver.AddDepthwiseConv2D(tflite::Register_DEPTHWISE_CONV_2D_INT8());
-        micro_op_resolver.AddReshape();
-        micro_op_resolver.AddSoftmax(tflite::Register_SOFTMAX_INT8());
+        tflite::PythonOpsResolver micro_op_resolver = new tflite::PythonOpsResolver();
         tflite::MicroInterpreter *interpreter = new tflite::MicroInterpreter(model, 
                                              micro_op_resolver, 
                                              (uint8_t*)microlite_interpreter->tensor_area->items, 

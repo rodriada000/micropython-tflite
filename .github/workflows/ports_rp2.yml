@@ -59,7 +59,7 @@ jobs:
         ../user-modules/microlite/prepare-tflm-rp2.sh
 
         cd ./
-        # rm user-modules/microlite/tflm/tensorflow/*/hexdump_test.cpp
+        rm ./user-modules/microlite/tflm/tensorflow/lite/micro/hexdump_test.cpp
 
     - name: list files
       run: |
