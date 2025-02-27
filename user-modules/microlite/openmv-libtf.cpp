@@ -90,7 +90,7 @@ extern "C" {
         // An easier approach is to just use the AllOpsResolver, but this will
         // incur some penalty in code space for op implementations that are not
         // needed by this graph.
-        tflite::PythonOpsResolver micro_op_resolver = new tflite::PythonOpsResolver();
+        tflite::PythonOpsResolver *micro_op_resolver = new tflite::PythonOpsResolver();
         tflite::MicroInterpreter *interpreter = new tflite::MicroInterpreter(model, 
                                              micro_op_resolver, 
                                              (uint8_t*)microlite_interpreter->tensor_area->items, 
