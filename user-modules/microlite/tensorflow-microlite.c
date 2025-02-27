@@ -44,10 +44,10 @@ const mp_obj_type_t microlite_interpreter_type;
 const mp_obj_type_t microlite_tensor_type;
 // const mp_obj_type_t microlite_audio_frontend_type;
 
-STATIC mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj);
+static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj);
 
 // - microlite tensor
-STATIC void tensor_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
+static void tensor_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
     (void)kind;
     microlite_tensor_obj_t *self = MP_OBJ_TO_PTR(self_in);
 
@@ -64,7 +64,7 @@ STATIC void tensor_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kin
     mp_print_str(print, ")\n");
 }
 
-STATIC mp_obj_t tensor_get_tensor_type (mp_obj_t self_in, mp_obj_t index_obj) {
+static mp_obj_t tensor_get_tensor_type (mp_obj_t self_in, mp_obj_t index_obj) {
 
     microlite_tensor_obj_t *self = MP_OBJ_TO_PTR(self_in);
 
@@ -79,7 +79,7 @@ STATIC mp_obj_t tensor_get_tensor_type (mp_obj_t self_in, mp_obj_t index_obj) {
 MP_DEFINE_CONST_FUN_OBJ_2(microlite_tensor_get_tensor_type, tensor_get_tensor_type);
 
 
-STATIC mp_obj_t tensor_get_value (mp_obj_t self_in, mp_obj_t index_obj) {
+static mp_obj_t tensor_get_value (mp_obj_t self_in, mp_obj_t index_obj) {
 
     microlite_tensor_obj_t *self = MP_OBJ_TO_PTR(self_in);
 
@@ -115,7 +115,7 @@ STATIC mp_obj_t tensor_get_value (mp_obj_t self_in, mp_obj_t index_obj) {
 
 MP_DEFINE_CONST_FUN_OBJ_2(microlite_tensor_get_value, tensor_get_value);
 
-STATIC mp_obj_t tensor_set_value (mp_obj_t self_in, mp_obj_t index_obj, mp_obj_t value) {
+static mp_obj_t tensor_set_value (mp_obj_t self_in, mp_obj_t index_obj, mp_obj_t value) {
     
     mp_int_t index = mp_obj_int_get_checked(index_obj);
 
@@ -149,7 +149,7 @@ STATIC mp_obj_t tensor_set_value (mp_obj_t self_in, mp_obj_t index_obj, mp_obj_t
 
 MP_DEFINE_CONST_FUN_OBJ_3(microlite_tensor_set_value, tensor_set_value);
 
-STATIC mp_obj_t tensor_quantize_float_to_int8 (mp_obj_t self_in, mp_obj_t float_obj) {
+static mp_obj_t tensor_quantize_float_to_int8 (mp_obj_t self_in, mp_obj_t float_obj) {
     
     if (!mp_obj_is_float(float_obj)) {
          mp_raise_TypeError("Expecting Parameter of float type");
@@ -175,7 +175,7 @@ STATIC mp_obj_t tensor_quantize_float_to_int8 (mp_obj_t self_in, mp_obj_t float_
 
 MP_DEFINE_CONST_FUN_OBJ_2(microlite_tensor_quantize_float_to_int8, tensor_quantize_float_to_int8);
 
-STATIC mp_obj_t tensor_quantize_int8_to_float (mp_obj_t self_in, mp_obj_t int_obj) {
+static mp_obj_t tensor_quantize_int8_to_float (mp_obj_t self_in, mp_obj_t int_obj) {
     
     if (!mp_obj_is_integer(int_obj)) {
          mp_raise_TypeError("Expecting Parameter of float type");
@@ -202,7 +202,7 @@ STATIC mp_obj_t tensor_quantize_int8_to_float (mp_obj_t self_in, mp_obj_t int_ob
 MP_DEFINE_CONST_FUN_OBJ_2(microlite_tensor_quantize_int8_to_float, tensor_quantize_int8_to_float);
 
 // interpreter class
-STATIC const mp_rom_map_elem_t tensor_locals_dict_table[] = {
+static const mp_rom_map_elem_t tensor_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_getValue), MP_ROM_PTR(&microlite_tensor_get_value) },
     { MP_ROM_QSTR(MP_QSTR_setValue), MP_ROM_PTR(&microlite_tensor_set_value) },
     { MP_ROM_QSTR(MP_QSTR_getType), MP_ROM_PTR(&microlite_tensor_get_tensor_type) },
@@ -210,7 +210,7 @@ STATIC const mp_rom_map_elem_t tensor_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_quantizeInt8ToFloat), MP_ROM_PTR(&microlite_tensor_quantize_int8_to_float) }
 };
 
-STATIC MP_DEFINE_CONST_DICT(tensor_locals_dict, tensor_locals_dict_table);
+static MP_DEFINE_CONST_DICT(tensor_locals_dict, tensor_locals_dict_table);
 
 const mp_obj_type_t microlite_tensor_type = {
     { &mp_type_type },
@@ -221,7 +221,7 @@ const mp_obj_type_t microlite_tensor_type = {
 
 // audio_frontend
 
-// STATIC mp_obj_t af_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args) {
+// static mp_obj_t af_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args) {
 //     mp_arg_check_num(n_args, n_kw, 0, 0, false);
 
 //     microlite_audio_frontend_obj_t*single_audio_frontend = m_new_obj(microlite_audio_frontend_obj_t);
@@ -234,7 +234,7 @@ const mp_obj_type_t microlite_tensor_type = {
 //     return MP_OBJ_FROM_PTR(single_audio_frontend);
 // }
 
-// STATIC void af_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
+// static void af_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
 //     (void)kind;
 //     // microlite_tensor_obj_t *self = MP_OBJ_TO_PTR(self_in);
 
@@ -254,12 +254,12 @@ const mp_obj_type_t microlite_tensor_type = {
 // MP_DEFINE_CONST_FUN_OBJ_1(af_configure, audio_frontend_configure);
 // MP_DEFINE_CONST_FUN_OBJ_2(af_execute, audio_frontend_execute);
 
-// STATIC const mp_rom_map_elem_t audio_frontend_locals_dict_table[] = {
+// static const mp_rom_map_elem_t audio_frontend_locals_dict_table[] = {
 //    { MP_ROM_QSTR(MP_QSTR_execute), MP_ROM_PTR(&af_execute) },
 //    { MP_ROM_QSTR(MP_QSTR_configure), MP_ROM_PTR(&af_configure) }
 // };
 
-// STATIC MP_DEFINE_CONST_DICT(audio_frontend_locals_dict, audio_frontend_locals_dict_table);
+// static MP_DEFINE_CONST_DICT(audio_frontend_locals_dict, audio_frontend_locals_dict_table);
 
 // const mp_obj_type_t microlite_audio_frontend_type = {
 //     { &mp_type_type },
@@ -271,7 +271,7 @@ const mp_obj_type_t microlite_tensor_type = {
 
 // - microlite interpreter
 
-STATIC void interpreter_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
+static void interpreter_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t kind) {
     (void)kind;
     microlite_interpreter_obj_t *self = MP_OBJ_TO_PTR(self_in);
     mp_print_str(print, "interpreter(");
@@ -287,7 +287,7 @@ STATIC void interpreter_print(const mp_print_t *print, mp_obj_t self_in, mp_prin
     mp_print_str(print, ")");
 }
 
-STATIC mp_obj_t interpreter_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args) {
+static mp_obj_t interpreter_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args) {
     mp_arg_check_num(n_args, n_kw, 4, 4, false);
 
 //    args:
@@ -348,7 +348,7 @@ STATIC mp_obj_t interpreter_make_new(const mp_obj_type_t *type, size_t n_args, s
 }
 
 // called before passing the tensor to the callback
-STATIC mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj) {
+static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj) {
 
     mp_uint_t index = mp_obj_int_get_uint_checked(index_obj);
 
@@ -367,7 +367,7 @@ STATIC mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_ob
 
 MP_DEFINE_CONST_FUN_OBJ_2(microlite_interpreter_get_input_tensor, interpreter_get_input_tensor);
 
-STATIC mp_obj_t interpreter_get_output_tensor(mp_obj_t self_in, mp_obj_t index_obj) {
+static mp_obj_t interpreter_get_output_tensor(mp_obj_t self_in, mp_obj_t index_obj) {
 
     mp_uint_t index = mp_obj_int_get_uint_checked(index_obj);
 
@@ -386,7 +386,7 @@ STATIC mp_obj_t interpreter_get_output_tensor(mp_obj_t self_in, mp_obj_t index_o
 
 MP_DEFINE_CONST_FUN_OBJ_2(microlite_interpreter_get_output_tensor, interpreter_get_output_tensor);
 
-STATIC mp_obj_t interpreter_invoke(mp_obj_t self_in) {
+static mp_obj_t interpreter_invoke(mp_obj_t self_in) {
     microlite_interpreter_obj_t *self = MP_OBJ_TO_PTR(self_in);
 
     
@@ -403,13 +403,13 @@ MP_DEFINE_CONST_FUN_OBJ_1(microlite_interpreter_invoke, interpreter_invoke);
 
 
 // interpreter class
-STATIC const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
+static const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_invoke), MP_ROM_PTR(&microlite_interpreter_invoke) },
     { MP_ROM_QSTR(MP_QSTR_getInputTensor), MP_ROM_PTR(&microlite_interpreter_get_input_tensor) },
     { MP_ROM_QSTR(MP_QSTR_getOutputTensor), MP_ROM_PTR(&microlite_interpreter_get_output_tensor) },
 };
 
-STATIC MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
+static MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
 
 const mp_obj_type_t microlite_interpreter_type = {
     { &mp_type_type },
@@ -424,14 +424,14 @@ const mp_obj_type_t microlite_interpreter_type = {
 
 // needs to be manually updated when the firmware is built.
 // see if we can pass through the project git commit when this is run.
-STATIC const MP_DEFINE_STR_OBJ(microlite_version_string_obj, TFLITE_MICRO_VERSION);
+static const MP_DEFINE_STR_OBJ(microlite_version_string_obj, TFLITE_MICRO_VERSION);
 
 // Define all properties of the module.
 // Table entries are key/value pairs of the attribute name (a string)
 // and the MicroPython object reference.
 // All identifiers and strings are written as MP_QSTR_xxx and will be
 // optimized to word-sized integers by the build system (interned strings).
-STATIC const mp_rom_map_elem_t microlite_module_globals_table[] = {
+static const mp_rom_map_elem_t microlite_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_microlite) },
     { MP_ROM_QSTR(MP_QSTR___version__), MP_ROM_PTR(&microlite_version_string_obj) },
     { MP_ROM_QSTR(MP_QSTR_interpreter), (mp_obj_t)&microlite_interpreter_type },
@@ -439,7 +439,7 @@ STATIC const mp_rom_map_elem_t microlite_module_globals_table[] = {
     // { MP_ROM_QSTR(MP_QSTR_audio_frontend), (mp_obj_t)&microlite_audio_frontend_type }
 
 };
-STATIC MP_DEFINE_CONST_DICT(microlite_module_globals, microlite_module_globals_table);
+static MP_DEFINE_CONST_DICT(microlite_module_globals, microlite_module_globals_table);
 
 // Define module object.
 const mp_obj_module_t microlite_cmodule = {

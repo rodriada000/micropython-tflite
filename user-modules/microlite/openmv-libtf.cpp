@@ -15,7 +15,7 @@
 
 extern "C" {
 
-    STATIC microlite::MicropythonErrorReporter micro_error_reporter;
+    static microlite::MicropythonErrorReporter micro_error_reporter;
     
 
     
@@ -85,9 +85,19 @@ extern "C" {
         //     (uint8_t*)microlite_interpreter->tensor_area->items, 
         //     microlite_interpreter->tensor_area->len, error_reporter);
 
-        tflite::AllOpsResolver resolver;
+        // Pull in only the operation implementations we need.
+        // This relies on a complete list of all the ops needed by this graph.
+        // An easier approach is to just use the AllOpsResolver, but this will
+        // incur some penalty in code space for op implementations that are not
+        // needed by this graph.
+        tflite::MicroMutableOpResolver<5> micro_op_resolver;
+        micro_op_resolver.AddAveragePool2D(tflite::Register_AVERAGE_POOL_2D_INT8());
+        micro_op_resolver.AddConv2D(tflite::Register_CONV_2D_INT8());
+        micro_op_resolver.AddDepthwiseConv2D(tflite::Register_DEPTHWISE_CONV_2D_INT8());
+        micro_op_resolver.AddReshape();
+        micro_op_resolver.AddSoftmax(tflite::Register_SOFTMAX_INT8());
         tflite::MicroInterpreter *interpreter = new tflite::MicroInterpreter(model, 
-                                             resolver, 
+                                             micro_op_resolver, 
                                              (uint8_t*)microlite_interpreter->tensor_area->items, 
                                              microlite_interpreter->tensor_area->len);
 
