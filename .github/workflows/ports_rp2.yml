@@ -52,18 +52,19 @@ jobs:
     - name: Setup Build for Tensorflow
       run: |
         echo "Regenerating tfm directory"
-        rm -rf ./micropython-modules/microlite/tflm
+        rm -rf ./user-modules/microlite/tflm
 
         cd ./tflite-micro
-        chmod +x ../micropython-modules/microlite/prepare-tflm-rp2.sh
-        ../micropython-modules/microlite/prepare-tflm-rp2.sh
+        chmod +x ../user-modules/microlite/prepare-tflm-rp2.sh
+        ../user-modules/microlite/prepare-tflm-rp2.sh
 
         cd ./
+        rm user-modules/microlite/tflm/tensorflow/*/hexdump_test.cpp
 
     - name: list files
       run: |
         ls -la ./
-        ls -la ./micropython-modules/microlite/tflm/third_party/cmsis_nn/Source/*
+        ls -la ./user-modules/microlite/tflm/third_party/cmsis_nn/Source/*
       continue-on-error: true
     - name: Build
       run: source tools/ci.sh && ci_rp2_build
