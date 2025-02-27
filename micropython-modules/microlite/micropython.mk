@@ -464,6 +464,15 @@ CFLAGS_USERMOD += -fno-builtin
 
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/c
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/kernels
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/arena_allocator
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/cortex_m_generic
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/kernels
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/memory_planner
+CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/tflite_bridge
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/flatbuffers/include
 
 CXXFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/gemmlowp
@@ -482,6 +491,16 @@ CFLAGS_USERMOD += -DTF_LITE_MCU_DEBUG_LOG
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/c
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/kernels
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/arena_allocator
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/cortex_m_generic
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/kernels
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/memory_planner
+CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/tflite_bridge
+
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/kissfft
 CFLAGS_USERMOD += -I$(MICROLITE_MOD_DIR)/tflm/third_party/kissfft/tools
 

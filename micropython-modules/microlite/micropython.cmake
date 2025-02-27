@@ -353,7 +353,18 @@ if (MICROLITE_PLATFORM STREQUAL "RP2")
 target_include_directories(microlite INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/tflm
+
     ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/c
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/core
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/kernels
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/arena_allocator
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/cortex_m_generic
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/kernels
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/memory_planner
+    ${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/lite/micro/tflite_bridge
+
     ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/kissfft
     ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/kissfft/tools
     ${CMAKE_CURRENT_LIST_DIR}/tflm/third_party/flatbuffers/include
