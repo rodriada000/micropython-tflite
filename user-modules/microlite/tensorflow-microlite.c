@@ -40,8 +40,8 @@
 
 // #if MICROPY_PY_MICROLITE 
 
-const mp_obj_full_type_t microlite_interpreter_type;
-const mp_obj_full_type_t microlite_tensor_type;
+// const mp_obj_type_t microlite_interpreter_type;
+// const mp_obj_type_t microlite_tensor_type;
 // const mp_obj_type_t microlite_audio_frontend_type;
 
 static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj);
@@ -212,7 +212,7 @@ static const mp_rom_map_elem_t tensor_locals_dict_table[] = {
 
 static MP_DEFINE_CONST_DICT(tensor_locals_dict, tensor_locals_dict_table);
 
-const mp_obj_full_type_t microlite_tensor_type = {
+const mp_obj_type_t microlite_tensor_type = {
     { &mp_type_type },
     .name = MP_QSTR_tensor,
     // .slot_index_print = (mp_print_fun_t*)&tensor_print,
