@@ -36,7 +36,7 @@
 
 #include "openmv-libtf.h"
 
-#include "tflm/tensorflow/lite/c/common.h"
+#include "tflm/tensorflow/lite/core/c/common.h"
 
 // #if MICROPY_PY_MICROLITE 
 
