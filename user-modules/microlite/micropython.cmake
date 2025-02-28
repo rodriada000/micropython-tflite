@@ -62,8 +62,10 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E echo "TF_MICRO_DIR: ${TF_MICRO_DIR}"
 # lite c
 
 file(GLOB TF_LITE_C_SRCS
-          "${TF_LITE_DIR}/c/*.cpp"
-          "${TF_LITE_DIR}/c/*.c")
+        "${TF_LITE_DIR}/core/c/*.cpp"
+        "${TF_LITE_DIR}/core/c/*.c"
+        "${TF_LITE_DIR}/c/*.cpp"
+        "${TF_LITE_DIR}/c/*.c")
 
 # lite core/api
 if (CONFIG_IDF_TARGET)
@@ -74,8 +76,10 @@ file(GLOB TF_LITE_API_SRCS
           "${TF_LITE_DIR}/core/c/*.c")
 else()
 file(GLOB TF_LITE_API_SRCS
-          "${TF_LITE_DIR}/core/api/*.cpp"
-          "${TF_LITE_DIR}/core/api/*.c")
+        "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/compiler/mlir/lite/core/api/*.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/compiler/mlir/lite/core/api/*.c"
+        "${TF_LITE_DIR}/core/api/*.cpp"
+        "${TF_LITE_DIR}/core/api/*.c")
 endif()
 
 # lite experimental
