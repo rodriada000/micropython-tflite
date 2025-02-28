@@ -208,7 +208,7 @@ SRC_USERMOD += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/experimental/microfront
 SRC_USERMOD += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/experimental/microfrontend/lib/log_lut.c
 
 
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/c/common.cpp
+SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core/c/common.cpp
 
 ifeq ($(TF_BOARD),CMSIS_NN)
 
@@ -236,7 +236,7 @@ SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/kernels/kernel_util
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_utils.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/flatbuffer_utils.cpp
 # SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/recording_simple_memory_allocator.cpp
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_string.cpp
+# SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_string.cpp
 # SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_profiler.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_allocator.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/arena_allocator/single_arena_buffer_allocator.cpp
@@ -344,7 +344,8 @@ SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/kernels/zeros
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_allocation_info.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_interpreter.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_context.cpp
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_graph.cpp
+# SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_graph.cpp
+SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_interpreter_graph.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/memory_helpers.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_log.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/arena_allocator/non_persistent_arena_buffer_allocator.cpp
@@ -358,14 +359,14 @@ SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/arena_allocat
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/tflite_bridge/flatbuffer_conversions_bridge.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/tflite_bridge/micro_error_reporter.cpp
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/tflite_bridge/op_resolver_bridge.cpp
+# SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/tflite_bridge/op_resolver_bridge.cpp
 
 
 # SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/fake_micro_context.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/system_setup.cpp
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core/api/error_reporter.cpp
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core/api/op_resolver.cpp
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/all_ops_resolver.cpp
+SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/compiler/mlir/lite/core/api/error_reporter.cpp
+# SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core/api/op_resolver.cpp
+SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/micro_op_resolver.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core/api/flatbuffer_conversions.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/core/api/tensor_utils.cpp
 
