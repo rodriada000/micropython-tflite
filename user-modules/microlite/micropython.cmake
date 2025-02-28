@@ -105,9 +105,12 @@ file(GLOB TF_LITE_KERNELS_SRCS
 
 # lite schema
 file(GLOB TF_LITE_SCHEMA_SRCS
-          "${TF_LITE_DIR}/schema/*.c"
-          "${TF_LITE_DIR}/schema/*.cc"
-          "${TF_LITE_DIR}/schema/*.cpp")
+        "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/compiler/mlir/lite/schema/*.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/compiler/mlir/lite/schema/*.cc"
+        "${CMAKE_CURRENT_LIST_DIR}/tflm/tensorflow/compiler/mlir/lite/schema/*.c"
+        "${TF_LITE_DIR}/schema/*.c"
+        "${TF_LITE_DIR}/schema/*.cc"
+        "${TF_LITE_DIR}/schema/*.cpp")
 
 # micro
 
