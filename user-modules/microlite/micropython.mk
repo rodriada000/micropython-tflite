@@ -224,7 +224,7 @@ SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/micro/kernels/cmsis
 
 endif
 
-SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/compiler/mlir/lite/schema/schema_utils.cc
+SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/compiler/mlir/lite/schema/schema_utils.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/experimental/microfrontend/lib/kiss_fft_int16.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/experimental/microfrontend/lib/fft_util.cpp
 SRC_USERMOD_CXX += $(MICROLITE_MOD_DIR)/tflm/tensorflow/lite/experimental/microfrontend/lib/fft.cpp
