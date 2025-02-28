@@ -40,9 +40,9 @@
 
 // #if MICROPY_PY_MICROLITE 
 
-// const mp_obj_type_t microlite_interpreter_type;
-// const mp_obj_type_t microlite_tensor_type;
-// const mp_obj_type_t microlite_audio_frontend_type;
+const mp_obj_type_t microlite_interpreter_type;
+const mp_obj_type_t microlite_tensor_type;
+const mp_obj_type_t microlite_audio_frontend_type;
 
 static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj);
 
@@ -215,9 +215,9 @@ static MP_DEFINE_CONST_DICT(tensor_locals_dict, tensor_locals_dict_table);
 const mp_obj_type_t microlite_tensor_type = {
     { &mp_type_type },
     .name = MP_QSTR_tensor
+    // .print = tensor_print,
+    // .locals_dict = (mp_obj_dict_t*)&tensor_locals_dict,
 };
-MP_OBJ_TYPE_SET_SLOT(&microlite_tensor_type, print, tensor_print, 0);
-MP_OBJ_TYPE_SET_SLOT(&microlite_tensor_type, locals_dict, (void*)&tensor_locals_dict, 1);
 
 // - microlite interpreter
 
@@ -297,26 +297,6 @@ static mp_obj_t interpreter_make_new(const mp_obj_type_t *type, size_t n_args, s
     return MP_OBJ_FROM_PTR(self);
 }
 
-
-// interpreter class
-static const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
-    { MP_ROM_QSTR(MP_QSTR_invoke), MP_ROM_PTR(&microlite_interpreter_invoke) },
-    { MP_ROM_QSTR(MP_QSTR_getInputTensor), MP_ROM_PTR(&microlite_interpreter_get_input_tensor) },
-    { MP_ROM_QSTR(MP_QSTR_getOutputTensor), MP_ROM_PTR(&microlite_interpreter_get_output_tensor) },
-};
-
-static MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
-
-const mp_obj_type_t microlite_interpreter_type = {
-    { &mp_type_type },
-    .name = MP_QSTR_interpreter
-};
-MP_OBJ_TYPE_SET_SLOT(&microlite_interpreter_type, print, interpreter_print, 0);
-MP_OBJ_TYPE_SET_SLOT(&microlite_interpreter_type, make_new, interpreter_make_new, 1);
-MP_OBJ_TYPE_SET_SLOT(&microlite_interpreter_type, locals_dict, (void*)&interpreter_locals_dict, 2);
-
-
-
 // called before passing the tensor to the callback
 static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_obj) {
 
@@ -329,15 +309,7 @@ static mp_obj_t interpreter_get_input_tensor(mp_obj_t self_in, mp_obj_t index_ob
     TfLiteTensor *input_tensor = libtf_interpreter_get_input_tensor(microlite_interpreter, index);
 
     microlite_tensor->tf_tensor = input_tensor;
-
-    // .slot_index_print = (mp_print_fun_t*)&interpreter_print,
-    // .slot_index_make_new = (mp_make_new_fun_t*)&interpreter_make_new,
-    // .slot_index_locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
     microlite_tensor->microlite_interpreter = microlite_interpreter;
-
-    // .slot_index_print = (mp_print_fun_t*)&tensor_print,
-    // .slot_index_locals_dict = (mp_obj_dict_t*)&tensor_locals_dict,
-
     microlite_tensor->base.type = &microlite_tensor_type;
 
     return MP_OBJ_FROM_PTR(microlite_tensor);
@@ -380,6 +352,23 @@ MP_DEFINE_CONST_FUN_OBJ_1(microlite_interpreter_invoke, interpreter_invoke);
 
 
 
+// interpreter class
+static const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
+    { MP_ROM_QSTR(MP_QSTR_invoke), MP_ROM_PTR(&microlite_interpreter_invoke) },
+    { MP_ROM_QSTR(MP_QSTR_getInputTensor), MP_ROM_PTR(&microlite_interpreter_get_input_tensor) },
+    { MP_ROM_QSTR(MP_QSTR_getOutputTensor), MP_ROM_PTR(&microlite_interpreter_get_output_tensor) },
+};
+
+static MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
+
+const mp_obj_type_t microlite_interpreter_type = {
+    { &mp_type_type },
+    .name = MP_QSTR_interpreter
+    // .print = interpreter_print
+    // .make_new = interpreter_make_new,
+    // .locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
+};
+
 
 // main microlite module
 
@@ -395,9 +384,9 @@ static const MP_DEFINE_STR_OBJ(microlite_version_string_obj, TFLITE_MICRO_VERSIO
 static const mp_rom_map_elem_t microlite_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_microlite) },
     { MP_ROM_QSTR(MP_QSTR___version__), MP_ROM_PTR(&microlite_version_string_obj) },
-    { MP_ROM_QSTR(MP_QSTR_interpreter), (mp_obj_type_t)&microlite_interpreter_type },
-    { MP_ROM_QSTR(MP_QSTR_tensor), (mp_obj_type_t)&microlite_tensor_type }
-    // { MP_ROM_QSTR(MP_QSTR_audio_frontend), (mp_obj_t)&microlite_audio_frontend_type }
+    { MP_ROM_QSTR(MP_QSTR_interpreter), (mp_obj_t)&microlite_interpreter_type },
+    { MP_ROM_QSTR(MP_QSTR_tensor), (mp_obj_t)&microlite_tensor_type },
+    { MP_ROM_QSTR(MP_QSTR_audio_frontend), (mp_obj_t)&microlite_audio_frontend_type }
 
 };
 static MP_DEFINE_CONST_DICT(microlite_module_globals, microlite_module_globals_table);
@@ -412,4 +401,3 @@ const mp_obj_module_t microlite_cmodule = {
 MP_REGISTER_MODULE(MP_QSTR_microlite, microlite_cmodule);
 
 // #endif
-
